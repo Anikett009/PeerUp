@@ -5,7 +5,12 @@ const Schema = mongoose.Schema
 const studentSchema = new Schema(
     {
         //basic details
-        name: {
+        fname: {
+            type: String,
+            required: true,
+            tolowercase: true
+        },
+        lname: {
             type: String,
             required: true,
             tolowercase: true
