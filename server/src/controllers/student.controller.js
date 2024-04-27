@@ -26,8 +26,18 @@ const postStudentInfo = async (req, res) => {
 }
 
 const getStudentInfo = async (req, res) => {
-    res.status(200).json({message:"Students here"})
-}
+    try {
+        // Fetch all data from the database
+        const allData = await Student.find(); // Or any other method to fetch data
+    
+        // Send the fetched data as JSON response
+        res.status(200).json(allData);
+      } catch (error) {
+        // If an error occurs during fetching data
+        console.error('Error fetching data:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    }
 
 module.exports = {
     postStudentInfo,
